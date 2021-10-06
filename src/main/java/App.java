@@ -13,9 +13,8 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args) {
         Manager manager = new Manager();
-        System.out.println(manager.createTables());
         List<String> weekdays = new ArrayList<>();
-
+manager.createTables();
         weekdays.add("Monday");
         weekdays.add("Tuesday");
       manager.updateWaiterShift("tom",weekdays);

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Manager {
 
-    String dbDiskURL = "jdbc:h2:file:./home/codex-coder/Desktop/overgear-manager/overgeared.db";
+    String dbDiskURL = "jdbc:h2:file:./overgeared.db";
     Jdbi jdbi = Jdbi.create(dbDiskURL, "sa", "");
     Handle handle = jdbi.open();
 
@@ -21,11 +21,15 @@ public class Manager {
         return names;
     }
 
-    public List createTables() {
-        handle.execute("drop table weekdays");
-//        handle.execute("drop table waiters");
-        handle.execute("drop table shifts");
+    public void createTables() {
+//        handle.execute("drop table weekdays");
+////        handle.execute("drop table waiters");
+//        handle.execute("drop table shifts");
+handle.execute("drop table if exists waiters");
 
+        handle.execute("drop table if exists weekdays");
+
+        handle.execute("drop table if exists shifts");
         handle.execute("create table if not exists waiters(id integer identity,name varchar(50))");
         handle.execute("create table if not exists weekdays(id integer identity , name varchar(50))");
         handle.execute("create table if not exists shifts ( id integer identity, waiternameid int not null,weekdayid int not null, FOREIGN key (waiternameid) REFERENCES waiters(id),FOREIGN key (weekdayid) REFERENCES weekdays(id))    ");
@@ -36,8 +40,13 @@ public class Manager {
         handle.execute("insert into weekdays (name)VALUES('Friday')");
         handle.execute("insert into weekdays (name)VALUES('Saturday')");
         handle.execute("insert into weekdays (name)VALUES('Sunday')");
+
         List<String> days = handle.createQuery("select name from weekdays").mapTo(String.class).list();
-        return days;
+        List<String>names=handle.createQuery("select name from waiters").mapTo(String.class).list();
+        List<String>shifts=handle.createQuery("select * from shifts").mapTo(String.class) .list();
+        System.out.println(days);
+        System.out.println(names);
+        System.out.println(shifts);
     }
 
     public void addWaiter(String name) {

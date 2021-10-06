@@ -4,13 +4,23 @@ import spark.template.velocity.VelocityTemplateEngine;
 
 //import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.sql.*;
 //import java.util.Map;
 
 import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
+        Manager manager = new Manager();
+        List<String> weekdays = new ArrayList<>();
+manager.createTables();
+        weekdays.add("Monday");
+        weekdays.add("Tuesday");
+      manager.updateWaiterShift("tom",weekdays);
+//        System.out.println(weekdays);
+        System.out.println(manager.waiterNames());
         port(2000);
         staticFiles.location("/public");
          get("/roster", (req, res) -> {

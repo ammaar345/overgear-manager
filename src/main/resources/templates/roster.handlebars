@@ -1,13 +1,112 @@
+
 <!doctype html>
 <html lang="en">
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Manager Roster</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="signing.css" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/offcanvas/">
+    <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
+<style>
+table, th, td{
+border: 1px solid black;
+}
+table{
+width:50%;
+border-collapse: collapse;
+}
+</style>
+
+
 <body>
-bread
+<div class="container bg-faded">
+    <h1 style="color: rgb(10, 134, 156);" class="text-center">Welcome To The Overgeared Restaurant Manager</h1>
+
+    <div class="row">
+    </div>
+    <hr>
+    <form action="/roster" method="POST">
+
+        <nav id="navbar">
+            <header id="header">OVERGEARED RESTAURANT MANAGER CHAMBERS</header>
+            <a href="#Roster_Schedule" class="nav-link">ROSTER SCHEDULE</a>
+            <a href="#Absence_Report" class="nav-link">ABSENCE REPORT</a>
+            <a href="#Update_Employees" class="nav-link">UPDATE EMPLOYEES</a>
+            <a href="#Help" class="nav-link">HELP</a>
+
+        </nav>
+
+        <main id="main-doc">
+            <section class="main-section" id="Roster_Schedule">
+                <header>ROSTER SCHEDULE</header>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thurs</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+
+                    <tbody>
+                    <th>
+                    <td>Ammaar</td><br>
+                    <td>Bantu</td>
+                    <td>Vuyo</td>
+                    <td>Sese</td>
+                    <td>Sese</td>
+                    <td>Sese</td>
+                    <td>Sese</td>
+                    </th>
+                    </tbody>
+                </table>
+            <section class="main-section" id="Absence_Report">
+                <header>ABSENCE REPORT</header>
+                <h4>ABSENT</h4>
+            <section class="main-section" id="Update_Employees">
+                <header>UPDATE EMPLOYEES</header>
+                <h4>UPDATE EMPLOYEES</h4>
+                <section class="main-section" id="Help">
+                <header>HELP</header>
+               <h4>HELP</h4>
+        </main>
+
+
+    </form>
+   <br>
+</div>
+</div>
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 </body>
-</html>
+

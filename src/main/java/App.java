@@ -5,17 +5,23 @@ import spark.template.velocity.VelocityTemplateEngine;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.sql.*;
 
 import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
+        Manager manager = new Manager();
+        manager.createTables();
         staticFiles.location("/public");
-//        get("/", (req, res) -> {
-//            Map<String, Object> map = new HashMap<>();
-//            res.redirect("/hello");
-////            return new ModelAndView(map, ".handlebars");
-//        }, new HandlebarsTemplateEngine());
+        get("/", (req, res) -> {
+            Map<String, Object> map = new HashMap<>();
+
+
+//            res.redirect("/roster");
+//            res.redirect("/roster");
+            return new ModelAndView(map, "roster.handlebars");
+        }, new HandlebarsTemplateEngine());
 
     }
 }

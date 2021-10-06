@@ -1,69 +1,49 @@
+//import jdk.internal.org.objectweb.asm.Handle;
+
+import org.jdbi.v3.core.Handle;
+import org.jdbi.v3.core.Jdbi;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Manager {
 
+    String dbDiskURL = "jdbc:h2:file:./manager.db";
+    Jdbi jdbi = Jdbi.create(dbDiskURL, "sa", "");
+    Handle handle = jdbi.open();
+
+    public List waiterNames() {
+        List<String> names = handle.createQuery("select name from waiters")
+                .mapTo(String.class)
+                .list();
+
+        return names;
+    }
+
     public void createTables() {
 
-        Connection connection = null;
 
-        try {
-
-            connection = DriverManager.getConnection("jdbc:sqlite:manager.db");
-            Statement statement = connection.createStatement();
-
-//            Faker faker = new Faker();
-            // create a database connection
-
-            statement.setQueryTimeout(30);  // set timeout to 30 sec.
-//            statement.executeUpdate("drop table if exists waiters");
-            statement.executeUpdate("create table if not exists waiters(id integer not null primary key,name string)");
-            statement.executeUpdate("create table if not exists weekdays(id integer not null primary key , name string)");
-            statement.executeUpdate("create table if not exists shifts ( id serial not null primary key,waiternameid int not null,weekdayid int not null, FOREIGN key (waiternameid) REFERENCES waiters(id),FOREIGN key (weekdayid) REFERENCES weekdays(id))    ");
+        handle.execute("create table if not exists waiters(id integer identity,name varchar(50))");
+        handle.execute("create table if not exists weekdays(id integer identity , name varchar(50))");
+        handle.execute("create table if not exists shifts ( id integer identity, waiternameid int not null,weekdayid int not null, FOREIGN key (waiternameid) REFERENCES waiters(id),FOREIGN key (weekdayid) REFERENCES weekdays(id))    ");
 
 
-            String sqlInsertDay1 = "insert into weekdays (id,name)VALUES(?,?)";
-            PreparedStatement st1 = connection.prepareStatement(sqlInsertDay1);
-            st1.setString(2, "Monday");
-            st1.executeUpdate();
-            st1.setString(2, "Tuesday");
-            st1.executeUpdate();
-            st1.setString(2, "Wednesday");
-            st1.executeUpdate();
-            st1.setString(2, "Thursday");
-            st1.executeUpdate();
-            st1.setString(2, "Friday");
-            st1.executeUpdate();
-            st1.setString(2, "Saturday");
-            st1.executeUpdate();
-            st1.setString(2, "Sunday");
-            st1.executeUpdate();
-        } catch (SQLException e) {
-            // if the error message is "out of memory",
-            // it probably means no database file is found
-            System.err.println(e.getMessage());
-        }
+        handle.execute("insert into weekdays (name)VALUES('Monday')");
+        handle.execute("insert into weekdays (name)VALUES('Tuesday')");
+        handle.execute("insert into weekdays (name)VALUES('Wednesday')");
+        handle.execute("insert into weekdays (name)VALUES('Thursday')");
+        handle.execute("insert into weekdays (name)VALUES('Friday')");
+        handle.execute("insert into weekdays (name)VALUES('Saturday')");
+        handle.execute("insert into weekdays (name)VALUES('Sunday')");
+
+
     }
 
-    public void addWaiter() {
+    public void addWaiter(String name) {
 
-        Connection connection = null;
-
-        try {
-
-            connection = DriverManager.getConnection("jdbc:sqlite:overgeared.db");
-            Statement statement = connection.createStatement();
-
-            String sqlInsertWaiter = "insert into waiter(id,name) VALUES (?,?)";
-            PreparedStatement insertWaiter = connection.prepareStatement(sqlInsertWaiter);
-        } catch (SQLException e) {
-            // if the error message is "out of memory",
-            // it probably means no database file is found
-            System.err.println(e.getMessage());
-        }
+        handle.execute("insert into waiters(name) VALUES (?)", name);
     }
 
-    public void updateWaiter() {
-
-    }
 
 }

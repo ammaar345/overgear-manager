@@ -13,6 +13,8 @@ public class App {
     public static void main(String[] args) {
         Manager manager = new Manager();
         manager.createTables();
+        manager.addWaiter("joe");
+        System.out.println(manager.waiterNames());
         staticFiles.location("/public");
         get("/", (req, res) -> {
             Map<String, Object> map = new HashMap<>();

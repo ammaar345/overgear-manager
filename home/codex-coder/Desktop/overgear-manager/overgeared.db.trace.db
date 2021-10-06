@@ -1,3 +1,0 @@
-2021-10-06 20:56:40 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEEKDAYS" not found; SQL statement:
-drop table weekdays [42102-199]

@@ -56,19 +56,21 @@ public class Manager {
 // handle.execute("delete from shifts where waiternameid=?",)x  x
     }
 
-    public void updateWaiterShift(String waiterName,List<String> weekday) {
+    public void updateWaiterShift(String waiterName, List<String> weekday) {
         int userExists = handle.select("select count(*) from waiters where name = ?", waiterName)
                 .mapTo(int.class)
                 .findOnly();
-
+        int waiterID = handle.select("select id from waiters where name is=?", waiterName).mapTo(int.class).findOnly();
         if (userExists < 1) {
 
 //            loop over checked list
             for (String day : weekday) {
                 // code block to be executed
-//             handle.createQuery("select id from weekdays where name=?",day).mapTo(String.class).list();
-                System.out.println(day);
-//                handle.execute("insert into shifts (waiternameid,weekdayid)VALUES(?,?)",,);
+                String id = handle.select("select id from weekdays where name=?", day).mapTo(String.class).findOnly();
+//             System.out.println(day);
+                int v = 0;
+                int idVal = Integer.parseInt(id);
+                handle.execute("insert into shifts (waiternameid,weekdayid)VALUES(?,?)", idVal, waiterID);
 
             }
 //             } else if (userExists == 1) {

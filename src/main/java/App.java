@@ -4,6 +4,7 @@ import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.sql.*;
 
@@ -13,7 +14,12 @@ public class App {
     public static void main(String[] args) {
         Manager manager = new Manager();
         System.out.println(manager.createTables());
-        manager.addWaiter("joe");
+        List<String> weekdays = new ArrayList<>();
+
+        weekdays.add("Monday");
+        weekdays.add("Tuesday");
+      manager.updateWaiterShift("tom",weekdays);
+//        System.out.println(weekdays);
         System.out.println(manager.waiterNames());
 
         staticFiles.location("/public");

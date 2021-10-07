@@ -82,15 +82,21 @@ public class Manager {
 //            System.out.println("bread");
 
             List<Integer> waitersPerDay = handle.select("select id from weekdays where id=?", i).mapTo(int.class).list();
-           countPerDay.add(waitersWorkingOnTheDay(i).size());
+            countPerDay.add(waitersWorkingOnTheDay(i).size());
 //            System.out.println(waitersWorkingOnTheDay(i).size());//<<---- this gives the amount of users on a given day
         }
 
         return countPerDay;
     }
 
+    public List<String> daysOfWeek() {
+        List<String> daysOfTheWeek = handle.createQuery("select name from weekdays").mapTo(String.class).list();
+//        System.out.println(daysOfTheWeek);
+        return daysOfTheWeek;
+    }
+
     public void updateWaiterShift(String waiterName, List<String> weekday) {
-        addWaiter(waiterName);
+//        addWaiter(waiterName);
         for (String day : weekday) {
             int dayID = handle.select("select id from weekdays where name=?", day).
                     mapTo(int.class).findOnly();

@@ -95,7 +95,7 @@ div.content {
     <div class="row">
     </div>
     <hr>
-    <form action="/update_employees" method="POST">
+    <form action="/add_employees" method="POST">
 
         <div class="sidebar">
             <header id="header" class="">THE OVERGEARED RESTAURANT MANAGER CHAMBERS</header>
@@ -131,35 +131,43 @@ div.content {
             </th>
             </tbody>
         </table>
-<br>
-        <label for="" class="sr-only">Employees Information</label>
-        <input type="" name="employeeName" id="inputName" class="employee" placeholder="Employee" required autofocus>
 
-            <a href="/update_employees">
-                <input type="submit" value="Add Waiter">
-            </a>
+    </form>
+    <br>
+    <label for="" class="sr-only">Employees Information</label>
+    <input type=text name="employeeName" id="inputName" class="employee" placeholder="Employee" >
 
-        <h1>Scheduled Shifts:</h1>
+    <a href="/add_employees">
+        <input type="submit" value="Add Waiter">
+    </a>
 
+    <h1>Scheduled Shifts:</h1>
 <!--        <form action="/update_employees" method="get">-->
+            <form action="update_employees" method="post">
+            {{#each weekday}}
+                <label for="" class="pl-5 px-3 ">{{this}}</label><input type="checkbox" value="{{this}}"
+                name="chkDays" class="checkbox">
+            {{/each}}
+<!--            <input type="checkbox" id="monday" name="chk" value="1">-->
+<!--            <label for="monday"> Monday</label>-->
+<!--            <input type="checkbox" id="tuesday" name="chk" value="2" >-->
+<!--            <label for="tue"> Tuesday</label>-->
+<!--            <input type="checkbox" id="wednesday" name="chk" value="3">-->
+<!--            <label for="wed"> Wednesday</label>-->
+<!--            <input type="checkbox" id="thursday" name="chk" value="4">-->
+<!--            <label for="Thursday"> Thursday</label>-->
+<!--            <input type="checkbox" id="friday" name="chk" value="5">-->
+<!--            <label for="friday"> Friday</label>-->
+<!--            <input type="checkbox" id="saturday" name="chk" value="6">-->
+<!--            <label for="saturday"> Saturday</label>-->
+<!--            <input type="checkbox" id="sunday" name="chk" value="7">-->
+<!--            <label for="sunday"> Sunday</label>-->
+            <input type=text name="employeeName" id="inputName" class="employee" placeholder="Employee" >
 
-            <input type="checkbox" id="monday" name="monday" value="1">
-            <label for="monday"> Monday</label>
-            <input type="checkbox" id="tuesday" name="tuesday" value="2" >
-            <label for="tue"> Tuesday</label>
-            <input type="checkbox" id="wednesday" name="wednesday" value="3">
-            <label for="wed"> Wednesday</label>
-            <input type="checkbox" id="thursday" name="thursday" value="4">
-            <label for="Thursday"> Thursday</label>
-            <input type="checkbox" id="friday" name="friday" value="5">
-            <label for="friday"> Friday</label>
-            <input type="checkbox" id="saturday" name="saturday" value="6">
-            <label for="saturday"> Saturday</label>
-            <input type="checkbox" id="sunday" name="sunday" value="7">
-            <label for="sunday"> Sunday</label>
             <a href="/update_employees">
                 <input type="submit" value="Submit">
             </a>
+
 <!--        </form>-->
         </div>
     </form>

@@ -9,19 +9,7 @@ public class WaiterTest {
     public void bread() {
         Manager manager = new Manager();
         manager.createTables();
-        manager.addWaiter("Joe");
-        manager.addWaiter("Tom");
-        manager.addWaiter("Thabo");
-        List<String> day = new ArrayList<>();
-        day.add("Monday");
-        day.add("Wednesday");
-        List<String> days = new ArrayList<>();
-        days.add("Friday");
-        days.add("Tuesday");
-        days.add("Sunday");
-        manager.updateWaiterShift("tom",day);
-        manager.updateWaiterShift("thabo",days );
-        System.out.println(manager.countWaiters());
+       manager.daysOfWeek();
 //        System.out.println(manager.waitersWorkingDays());
 //        System.out.println(manager.updateWaiterShift("Joe",day));
     }

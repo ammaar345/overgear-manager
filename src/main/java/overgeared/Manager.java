@@ -1,4 +1,4 @@
-//import jdk.internal.org.objectweb.asm.Handle;
+package overgeared;//import jdk.internal.org.objectweb.asm.Handle;
 
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
@@ -21,18 +21,19 @@ public class Manager {
         return names;
     }
 
+
+
     public void createTables() {
-//        handle.execute("drop table weekdays");
-////        handle.execute("drop table waiters");
-//        handle.execute("drop table shifts");
-handle.execute("drop table if exists waiters");
+//        handle.execute("drop table if exists waiters");
+//        handle.execute("drop table if exists weekdays");
+//        handle.execute("drop table if exists shifts");
+//        handle.execute("drop table if exists absentRequests");
 
-        handle.execute("drop table if exists weekdays");
-
-        handle.execute("drop table if exists shifts");
+        handle.execute("create table if not exists absentRequests(id integer identity,name varchar(50),day_absent varchar(50),day_replaced varchar(50))");
         handle.execute("create table if not exists waiters(id integer identity,name varchar(50))");
         handle.execute("create table if not exists weekdays(id integer identity , name varchar(50))");
         handle.execute("create table if not exists shifts ( id integer identity, waiternameid int not null,weekdayid int not null, FOREIGN key (waiternameid) REFERENCES waiters(id),FOREIGN key (weekdayid) REFERENCES weekdays(id))    ");
+
         handle.execute("insert into weekdays (name)VALUES('Monday')");
         handle.execute("insert into weekdays (name)VALUES('Tuesday')");
         handle.execute("insert into weekdays (name)VALUES('Wednesday')");
@@ -42,11 +43,9 @@ handle.execute("drop table if exists waiters");
         handle.execute("insert into weekdays (name)VALUES('Sunday')");
 
         List<String> days = handle.createQuery("select name from weekdays").mapTo(String.class).list();
-        List<String>names=handle.createQuery("select name from waiters").mapTo(String.class).list();
-        List<String>shifts=handle.createQuery("select * from shifts").mapTo(String.class) .list();
-        System.out.println(days);
-        System.out.println(names);
-        System.out.println(shifts);
+        List<String> names = handle.createQuery("select name from waiters").mapTo(String.class).list();
+        List<String> shifts = handle.createQuery("select * from shifts").mapTo(String.class).list();
+//
     }
 
     public void addWaiter(String name) {
@@ -56,41 +55,47 @@ handle.execute("drop table if exists waiters");
 
         if (checkIfUserExist < 1) {
             handle.execute("insert into waiters(name) VALUES (?)", name);
+        } else if (checkIfUserExist > 0) {
+            ifUserExists();
         }
+    }
 
-//        else if (checkIfUserExist > 0) {
-//            updateWaiterShift(name);
-//        }
-
-// handle.execute("delete from shifts where waiternameid=?",)x  x
+    public String ifUserExists() {
+        return "User already exists";
     }
 
     public void updateWaiterShift(String waiterName, List<String> weekday) {
-        int userExists = handle.select("select count(*) from waiters where name = ?", waiterName)
-                .mapTo(int.class)
-                .findOnly();
-        int waiterID = handle.select("select id from waiters where name is=?", waiterName).mapTo(int.class).findOnly();
-        if (userExists < 1) {
+//        int userExists = handle.select("select count(*) from waiters where name = ?", waiterName)
+//                .mapTo(int.class)
+//                .findOnly();
 
 //            loop over checked list
-            for (String day : weekday) {
-                // code block to be executed
-                String id = handle.select("select id from weekdays where name=?", day).mapTo(String.class).findOnly();
-//             System.out.println(day);
-                int v = 0;
-                int idVal = Integer.parseInt(id);
-                handle.execute("insert into shifts (waiternameid,weekdayid)VALUES(?,?)", idVal, waiterID);
+        for (String day : weekday) {
+            // code block to be executed
+            List<Integer> dayID = handle.select("select id from weekdays where name=?", weekday).mapTo(int.class).list();
+//                List<Integer> waiterID = handle.select("select id from waiters where name =?", waiterName).mapTo(int.class).list();
 
-            }
-//             } else if (userExists == 1) {
+            int id1 = dayID.get(1);
+            int id2 = dayID.get(2);
+//                System.out.println(id1);
+//                System.out.println(id2);
+            System.out.println(dayID);
+//                int idVal = Integer.parseInt(dayID);
+//                handle.execute("insert into shifts (waiternameid,weekdayid)VALUES(?,?)", id1, waiterID);
+
+//                handle.execute("insert into shifts (waiternameid,weekdayid)VALUES(?,?)", id2, waiterID);
+
+        }
+    }
+//        else if (userExists == 1) {
 //            int id = handle.execute("select id from waiters where name =?", waiterName);
 //            handle.execute("UPDATE shifts\n" +
 //                    "SET weekdayid = ?, ...\n" +
 //                    "WHERE waiternameid=?", id, id);
-
-        }
+//
+//        }
 
 //set foreign key weekday id to equal the id of the waiter entered where the waiter's id was first found
-    }
+//    }
 
 }

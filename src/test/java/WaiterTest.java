@@ -15,7 +15,8 @@ public class WaiterTest {
         List<String> day = new ArrayList<>();
         day.add("Monday");
         day.add("Wednesday");
-        manager.updateWaiterShift("Bro",day);
+        manager.updateWaiterShift("tom",day);
+
 //        System.out.println(manager.updateWaiterShift("Joe",day));
     }
 }

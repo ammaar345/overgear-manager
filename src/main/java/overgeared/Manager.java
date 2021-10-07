@@ -21,13 +21,11 @@ public class Manager {
         return names;
     }
 
-
-
     public void createTables() {
-//        handle.execute("drop table if exists waiters");
-//        handle.execute("drop table if exists weekdays");
-//        handle.execute("drop table if exists shifts");
-//        handle.execute("drop table if exists absentRequests");
+        handle.execute("drop table if exists waiters");
+        handle.execute("drop table if exists weekdays");
+        handle.execute("drop table if exists shifts");
+        handle.execute("drop table if exists absentRequests");
 
         handle.execute("create table if not exists absentRequests(id integer identity,name varchar(50),day_absent varchar(50),day_replaced varchar(50))");
         handle.execute("create table if not exists waiters(id integer identity,name varchar(50))");
@@ -41,20 +39,15 @@ public class Manager {
         handle.execute("insert into weekdays (name)VALUES('Friday')");
         handle.execute("insert into weekdays (name)VALUES('Saturday')");
         handle.execute("insert into weekdays (name)VALUES('Sunday')");
-
-        List<String> days = handle.createQuery("select name from weekdays").mapTo(String.class).list();
-        List<String> names = handle.createQuery("select name from waiters").mapTo(String.class).list();
-        List<String> shifts = handle.createQuery("select * from shifts").mapTo(String.class).list();
-//
     }
 
     public void addWaiter(String name) {
-        int checkIfUserExist = handle.select("select count(*) from waiters where name = ?", name)
+        int checkIfUserExist = handle.select("select count(*) from waiters where name = ?", name.toLowerCase())
                 .mapTo(int.class)
                 .findOnly();
 
         if (checkIfUserExist < 1) {
-            handle.execute("insert into waiters(name) VALUES (?)", name);
+            handle.execute("insert into waiters(name) VALUES (?)", name.toLowerCase());
         } else if (checkIfUserExist > 0) {
             ifUserExists();
         }
@@ -65,27 +58,20 @@ public class Manager {
     }
 
     public void updateWaiterShift(String waiterName, List<String> weekday) {
-//        int userExists = handle.select("select count(*) from waiters where name = ?", waiterName)
-//                .mapTo(int.class)
-//                .findOnly();
-
-//            loop over checked list
+       addWaiter(waiterName);
         for (String day : weekday) {
-            // code block to be executed
-            List<Integer> dayID = handle.select("select id from weekdays where name=?", weekday).mapTo(int.class).list();
-//                List<Integer> waiterID = handle.select("select id from waiters where name =?", waiterName).mapTo(int.class).list();
-
-            int id1 = dayID.get(1);
-            int id2 = dayID.get(2);
-//                System.out.println(id1);
-//                System.out.println(id2);
-            System.out.println(dayID);
-//                int idVal = Integer.parseInt(dayID);
-//                handle.execute("insert into shifts (waiternameid,weekdayid)VALUES(?,?)", id1, waiterID);
-
-//                handle.execute("insert into shifts (waiternameid,weekdayid)VALUES(?,?)", id2, waiterID);
-
+            int dayID = handle.select("select id from weekdays where name=?", day).
+                    mapTo(int.class).findOnly();
+            int waiterID = handle.select("select id from waiters where name =?", waiterName).mapTo(int.class).findOnly();
+//            System.out.println(dayID);
+//            System.out.println(waiterID);
+            handle.execute("insert into shifts (waiternameid,weekdayid)VALUES(?,?)",waiterID , dayID);
         }
+//        List <Integer> waitersid=handle.select("select waiternameid from shifts").mapTo(int.class).list();
+//
+//        List <Integer> shiftsdayid=handle.select("select weekdayid from shifts").mapTo(int.class).list();
+//        System.out.println(waitersid);
+//        System.out.println(shiftsdayid);
     }
 //        else if (userExists == 1) {
 //            int id = handle.execute("select id from waiters where name =?", waiterName);

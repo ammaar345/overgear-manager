@@ -1,8 +1,11 @@
+package overgeared;
+
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.template.velocity.VelocityTemplateEngine;
 
 //import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +23,7 @@ manager.createTables();
         weekdays.add("Tuesday");
       manager.updateWaiterShift("tom",weekdays);
 //        System.out.println(weekdays);
-        System.out.println(manager.waiterNames());
+//        System.out.println(manager.waiterNames());
         port(2000);
         staticFiles.location("/public");
          get("/roster", (req, res) -> {

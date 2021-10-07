@@ -110,3 +110,18 @@ WHERE WAITERNAMEID=? "; expected "identifier"; SQL statement:
 UPDATE shifts
 SET weekdayid = ?, ...
 WHERE waiternameid=? [42001-199]
+2021-10-07 12:30:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT  WAITERS.NAME AS NAME
+    FROM WAITERS
+    LEFT JOIN SHIFTS
+    ON WAITERS.ID=SHIFTS.WAITERNAMEID
+    LEFT JOIN WEEKDAYS
+    ON WEEKDAYS.ID=SHIFTS.WEEKDAYID
+    WHERE WEEKDAYS.ID= [*]"; expected "ALL, ANY, SOME"; SQL statement:
+SELECT  waiters.name AS name
+    FROM waiters
+    LEFT JOIN shifts
+    ON waiters.id=shifts.waiternameid
+    LEFT JOIN weekdays
+    ON weekdays.id=shifts.weekdayid
+    where weekdays.id= [42001-199]

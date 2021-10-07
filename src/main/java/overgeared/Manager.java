@@ -57,15 +57,46 @@ public class Manager {
         return "User already exists";
     }
 
+    public void clearWaiterShifts() {
+        handle.execute("drop table shifts");
+        handle.execute("create table if not exists shifts ( id integer identity, waiternameid int not null,weekdayid int not null, FOREIGN key (waiternameid) REFERENCES waiters(id),FOREIGN key (weekdayid) REFERENCES weekdays(id))    ");
+
+    }
+
+    public List<String> waitersWorkingOnTheDay(int dayID) {
+        List<String> waitersDaysWorkingOnADay = handle.select("SELECT  waiters.name AS name\n" +
+                "    FROM waiters\n" +
+                "    LEFT JOIN shifts\n" +
+                "    ON waiters.id=shifts.waiternameid\n" +
+                "    LEFT JOIN weekdays\n" +
+                "    ON weekdays.id=shifts.weekdayid\n" +
+                "    where weekdays.id=?", dayID).mapTo(String.class).list();
+        return waitersDaysWorkingOnADay;
+        ///gives the users working on a day
+
+    }
+
+    public int countWaiters() {
+
+        for (int i = 1; i < 8; i++) {
+//            System.out.println("bread");
+
+            List<Integer> waitersPerDay = handle.select("select id from weekdays where id=?",i).mapTo(int.class).list();
+            System.out.println(waitersWorkingOnTheDay(i).size());//<<---- this gives the amount of users on a given day
+        }
+
+        return 0;
+    }
+
     public void updateWaiterShift(String waiterName, List<String> weekday) {
-       addWaiter(waiterName);
+        addWaiter(waiterName);
         for (String day : weekday) {
             int dayID = handle.select("select id from weekdays where name=?", day).
                     mapTo(int.class).findOnly();
             int waiterID = handle.select("select id from waiters where name =?", waiterName).mapTo(int.class).findOnly();
 //            System.out.println(dayID);
 //            System.out.println(waiterID);
-            handle.execute("insert into shifts (waiternameid,weekdayid)VALUES(?,?)",waiterID , dayID);
+            handle.execute("insert into shifts (waiternameid,weekdayid)VALUES(?,?)", waiterID, dayID);
         }
 //        List <Integer> waitersid=handle.select("select waiternameid from shifts").mapTo(int.class).list();
 //

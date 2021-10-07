@@ -16,7 +16,8 @@ public class WaiterTest {
         day.add("Monday");
         day.add("Wednesday");
         manager.updateWaiterShift("tom",day);
-
+        manager.countWaiters();
+//        System.out.println(manager.waitersWorkingDays());
 //        System.out.println(manager.updateWaiterShift("Joe",day));
     }
 }

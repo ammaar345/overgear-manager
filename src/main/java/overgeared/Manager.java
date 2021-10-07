@@ -76,16 +76,17 @@ public class Manager {
 
     }
 
-    public int countWaiters() {
-
+    public List<Integer> countWaiters() {
+        List<Integer> countPerDay = new ArrayList<>();
         for (int i = 1; i < 8; i++) {
 //            System.out.println("bread");
 
-            List<Integer> waitersPerDay = handle.select("select id from weekdays where id=?",i).mapTo(int.class).list();
-            System.out.println(waitersWorkingOnTheDay(i).size());//<<---- this gives the amount of users on a given day
+            List<Integer> waitersPerDay = handle.select("select id from weekdays where id=?", i).mapTo(int.class).list();
+           countPerDay.add(waitersWorkingOnTheDay(i).size());
+//            System.out.println(waitersWorkingOnTheDay(i).size());//<<---- this gives the amount of users on a given day
         }
 
-        return 0;
+        return countPerDay;
     }
 
     public void updateWaiterShift(String waiterName, List<String> weekday) {

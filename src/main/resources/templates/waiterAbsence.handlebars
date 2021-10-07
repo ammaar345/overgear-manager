@@ -8,121 +8,144 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>overgeared.Manager overgeared.Roster</title>
+    <title>overgeared.Waiter overgeared.absence</title>
 
 </head>
 
 <style>
-table, th, td{
-border: 1px solid black;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:400,500&display=swap');
+
+* {
+  box-sizing: border-box;
 }
-table{
-width:50%;
-border-collapse: collapse;
-}
+
 body {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flwx-wrap: wrap;
   margin: 0;
-  font-family: "Lato", sans-serif;
 }
-.sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
+
+nav {
+  padding-top: 25px;
+  background-color: #FFE4FA;
+  border-right: 2px solid #A6E8E4;
+  min-width: 200px;
+  height: 100vh;
+  font-size: 12px;
 }
-.sidebar a {
+
+nav a {
+  border-top: 1px solid #A6E8E4;
+  color: #4F4F4F;
   display: block;
-  color: black;
-  padding: 16px;
+  padding: 15px;
   text-decoration: none;
 }
-.sidebar a.active {
-  background-color: #04AA6D;
-  color: white;
+
+main {
+  flex: 1;
+  padding: 20px;
+  max-height: 100vh;
+  overflow-y: scroll;
 }
-.sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
+section {
+  padding: 15px;
+  line-height: 1.5;
 }
-div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
-  height: 1000px;
-<!--  float: none;-->
+
+header {
+  font-size: 15px;
+  word-wrap: break-word;
+  font-weight: 500;
 }
-@media screen and (max-width: 700px) {
-  .sidebar {
-    width: 100%;
+
+.header-padding {
+    padding: 25px;
+    background-color: #A6E8E4
+    }
+
+pre {
+  padding-top: 14px;
+  background-color: #A6E8E4
+}
+
+@media (max-width: 600px){
+  body {
+    flex-direction: column;
+  }
+  nav {
+    border-right: none;
+    border-bottom: 2px solid #FFE4FA;
+    height: 300px;
+    overflow-y: scroll;
+    width: 100%
+  }
+  main {
     height: auto;
-    position: relative;
+    width: 100%;
+    overflow-y: none;
   }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
-}
-@media screen and (max-width: 400px) {
-  .sidebar a {
-    text-align: center;
-    float: none;
-  }
+
+
 }
 </style>
 
 
 <body>
+
+<nav id="navbar">
+    <div class="header-padding">
+        <header id="header">THE OVERGEARED</header>
+        <header id="header">RESTAURANT WAITER</header>
+        <header id="header">CHAMBERS</header>
+    </div>
+
+
+    <a class="nav-link" href="/roster_schedule">ROSTER SCHEDULE</a>
+    <a class="nav-link" href="/absence">ABSENCE REPORTING</a>
+    <a href="#Learning_pathway" class="nav-link">LOG OUT</a>
+</nav>
+
 <div class="container bg-faded">
-    <h1 style="color: rgb(10, 134, 156);" class="text-center">Welcome To The Overgeared Restaurant</h1>
-
-    <div class="row"></div>
-    <hr>
-    <form action="/roster" method="POST">
-        <div class="sidebar">
-            <header id="header">THE OVERGEARED RESTAURANT WAITER CHAMBERS</header>
-            <a class="nav-link" href="/roster_schedule">ROSTER SCHEDULE</a>
-            <a class="nav-link" href="/absence">ABSENCE REPORTING</a>
-            <a href="/" class="nav-link">LOG OUT</a>
-        </div>
-
+    <h1 style="color: rgb(10, 134, 156);" class="text-center">ABSENCE REPORT CARD</h1>
+    <form id="body" class="parent">
         <div class="content">
-            <header>ABSENCE REPORT CARD</header>
+            <label for="fname">Employee ID:</label><br>
+            <input type="text" id="fname" name="fname"><br>
+
+            <label for="lname">Employee Name:</label><br>
+            <input type="text" id="lname" name="lname">
+
+            <label for="lname">Job Specification:</label><br>
+            <input type="text" id="lname" name="lname">
+
+            <label for="cars">Day of Absence:</label>
+            <select name="cars" id="cars">
+                <option value="sunday">Sunday</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+            </select>
+
+            <label for="cars">Day to replace shift:</label>
+            <select name="cars" id="cars">
+                <option value="sunday">Sunday</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+            </select>
+
         </div>
     </form>
     <br>
 
-    <form>
-        <label for="fname">Employee ID:</label><br>
-        <input type="text" id="fname" name="fname"><br>
-
-        <label for="lname">Employee Name:</label><br>
-        <input type="text" id="lname" name="lname">
-
-        <label for="lname">Job Specification:</label><br>
-        <input type="text" id="lname" name="lname">
-
-        <label for="cars">Day of Absence:</label>
-        <select name="cars" id="cars">
-            <option value="sunday">Sunday</option>
-            <option value="monday">Monday</option>
-            <option value="tuesday">Tuesday</option>
-            <option value="wednesday">Wednesday</option>
-            <option value="thursday">Thursday</option>
-            <option value="friday">Friday</option>
-            <option value="saturday">Saturday</option>
-        </select>
-
-        <label for="cars">Day to replace shift:</label>
-        <select name="cars" id="cars">
-            <option value="sunday">Sunday</option>
-            <option value="monday">Monday</option>
-            <option value="tuesday">Tuesday</option>
-            <option value="wednesday">Wednesday</option>
-            <option value="thursday">Thursday</option>
-            <option value="friday">Friday</option>
-            <option value="saturday">Saturday</option>
-        </select>
-    </form>
 </div>
 
 </body>

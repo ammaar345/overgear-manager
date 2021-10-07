@@ -4,10 +4,8 @@ import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.template.velocity.VelocityTemplateEngine;
 
-<<<<<<< HEAD:src/main/java/overgeared/App.java
 //import java.util.ArrayList;
-=======
->>>>>>> 4aed55b8690d4b7251f1494c77c1eddfb8221639:src/main/java/App.java
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -22,10 +22,10 @@ public class Manager {
     }
 
     public void createTables() {
-        handle.execute("drop table if exists waiters");
+//        handle.execute("drop table if exists waiters");
         handle.execute("drop table if exists weekdays");
-        handle.execute("drop table if exists shifts");
-        handle.execute("drop table if exists absentRequests");
+//        handle.execute("drop table if exists shifts");
+//        handle.execute("drop table if exists absentRequests");
 
         handle.execute("create table if not exists absentRequests(id integer identity,name varchar(50),day_absent varchar(50),day_replaced varchar(50))");
         handle.execute("create table if not exists waiters(id integer identity,name varchar(50))");

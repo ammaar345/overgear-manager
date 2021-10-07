@@ -3,6 +3,7 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.template.velocity.VelocityTemplateEngine;
 
 //import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ public class App {
 manager.createTables();
         weekdays.add("Monday");
         weekdays.add("Tuesday");
-      manager.updateWaiterShift("tom",weekdays);
+//      manager.updateWaiterShift("tom",weekdays);
 //        System.out.println(weekdays);
         System.out.println(manager.waiterNames());
         port(2000);
@@ -39,16 +40,12 @@ manager.createTables();
             return new ModelAndView(map, "login.handlebars");
         }, new HandlebarsTemplateEngine());
 
-//        get("/roster", (req, res) -> {
-//            Map<String, Object> map = new HashMap<>();
-////            res.redirect("/hello");
-//            return new ModelAndView(map, "roster.handlebars");
-//        }, new HandlebarsTemplateEngine());
-//
-//        get("/roster", (req, res) -> {
-//            Map<String, Object> map = new HashMap<>();
-////            res.redirect("/hello");
-//            return new ModelAndView(map, "roster.handlebars");
-//        }, new HandlebarsTemplateEngine());
+
+        // waiter getters
+        get("/absence", (req, res) -> {
+            Map<String, Object> map = new HashMap<>();
+            return new ModelAndView(map, "waiterAbsence.handlebars");
+        }, new HandlebarsTemplateEngine());
+
     }
 }

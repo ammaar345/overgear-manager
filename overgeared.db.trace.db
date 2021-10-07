@@ -7,3 +7,9 @@ select id from waiters where name is=? [42001-199]
 2021-10-06 21:02:33 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT ID FROM WAITERS WHERE NAME IS=[*]? "; expected "NOT, NULL, DISTINCT"; SQL statement:
 select id from waiters where name is=? [42001-199]
+2021-10-07 12:44:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT ID FROM WAITERS WHERE NAME IS=[*]? "; expected "NOT, NULL, DISTINCT"; SQL statement:
+select id from waiters where name is=? [42001-199]
+2021-10-07 12:48:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT ID FROM WAITERS WHERE NAME IS=[*]? "; expected "NOT, NULL, DISTINCT"; SQL statement:
+select id from waiters where name is=? [42001-199]

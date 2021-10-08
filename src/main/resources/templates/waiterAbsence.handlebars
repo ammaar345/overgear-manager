@@ -2,19 +2,16 @@
 <html lang="en">
 
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>overgeared.Waiter overgeared.absence</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 
 </head>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:400,500&display=swap');
-
 * {
   box-sizing: border-box;
 }
@@ -102,6 +99,7 @@ pre {
 
 
 }
+
 </style>
 
 
@@ -134,36 +132,37 @@ pre {
                 <label id="number" for="lname">Employee Name:</label><br>
                 <input type="text" id="lname" name="lname">
 
-                <label id="number" for="lname">Job Specification:</label><br>
-                <input type="text" id="lname" name="lname">
             </div>
 
             <label id="number" class="content" for="cars">Day of Absence:</label>
-            <select name="cars" id="cars">
-                <option value="sunday">Sunday</option>
+            <select name="dayOff" id="cars">
+
                 <option value="monday">Monday</option>
                 <option value="tuesday">Tuesday</option>
                 <option value="wednesday">Wednesday</option>
                 <option value="thursday">Thursday</option>
                 <option value="friday">Friday</option>
                 <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
             </select>
 
             <label id="number" class="content" for="cars">Day to replace shift:</label>
-            <select name="cars" id="cars">
-                <option value="sunday">Sunday</option>
+            <select name="dayReplaced" id="cars">
+
                 <option value="monday">Monday</option>
                 <option value="tuesday">Tuesday</option>
                 <option value="wednesday">Wednesday</option>
                 <option value="thursday">Thursday</option>
                 <option value="friday">Friday</option>
                 <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+
             </select>
 
-            <input type="submit" value="Submit">
-
+            <input type="submit" class="bg" value="Submit Request">
+        </form>
     </div>
-    </form>
+
     <br>
 
 </div>

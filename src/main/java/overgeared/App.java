@@ -216,6 +216,14 @@ public class App {
             String dayOff = req.queryParams("dayOff");
             String dayToRepay = req.queryParams("dayReplaced");
             manager.sendReport(nameOfWaiter, dayOff, dayToRepay);
+            res.redirect("/waiter_chamber");
+            return new ModelAndView(map, "waiterAbsence.handlebars");
+
+        }, new HandlebarsTemplateEngine());
+
+        get("/waiterAbsence", (req, res) -> {
+            Map<String, Object> map = new HashMap<>();
+
             return new ModelAndView(map, "waiterAbsence.handlebars");
 
         }, new HandlebarsTemplateEngine());
@@ -225,6 +233,9 @@ public class App {
 //
         get("/absence_report", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
+       map.put("name",manager.waitersRequestedOffDays());
+            map.put("dayAbsent",manager.daysOff());
+            map.put("dayToReplace",manager.daysToBeReplaced());
             return new ModelAndView(map, "absence_report.handlebars");
 
         }, new HandlebarsTemplateEngine());

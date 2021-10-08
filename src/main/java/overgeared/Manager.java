@@ -22,14 +22,14 @@ public class Manager {
     }
 
     public void sendReport(String nameOfWaiter, String dayOff, String dayReplaced) {
-        handle.execute("insert into absentRequests(name,day_absent,day_replaced),VALUES(?,?,?)", nameOfWaiter, dayOff, dayReplaced);
+        handle.execute("insert into absentRequests(name,day_absent,day_replaced)VALUES(?,?,?)", nameOfWaiter, dayOff, dayReplaced);
     }
 
     public void createTables() {
 //        handle.execute("drop table if exists waiters");
         handle.execute("drop table if exists weekdays");
 //        handle.execute("drop table if exists shifts");
-//        handle.execute("drop table if exists absentRequests");
+        handle.execute("drop table if exists absentRequests");
 
         handle.execute("create table if not exists absentRequests(id integer identity,name varchar(50),day_absent varchar(50),day_replaced varchar(50))");
         handle.execute("create table if not exists waiters(id integer identity,name varchar(50))");
@@ -46,19 +46,19 @@ public class Manager {
     }
 
     public List<String> waitersRequestedOffDays() {
-        List<String> namesOfWaiters = handle.select("select name from absenteeRequests").mapTo(String.class).list();
+        List<String> namesOfWaiters = handle.select("select name from absentRequests").mapTo(String.class).list();
 
         return namesOfWaiters;
     }
 
     public List<String> daysOff() {
-        List<String> daysOff = handle.select("select day_absent from absenteeRequests").mapTo(String.class).list();
+        List<String> daysOff = handle.select("select day_absent from absentRequests").mapTo(String.class).list();
 
         return daysOff;
     }
 
     public List<String> daysToBeReplaced() {
-        List<String> dayToBeReplaced = handle.select("select day_replaced from absenteeRequests").mapTo(String.class).list();
+        List<String> dayToBeReplaced = handle.select("select day_replaced from absentRequests").mapTo(String.class).list();
         return dayToBeReplaced;
     }
 

@@ -82,10 +82,6 @@ public class App {
             Map<String, Object> map = new HashMap<>();
             map.put("weekday", manager.daysOfWeek());
             map.put("days", manager.daysOfWeek());
-            for (int i = 1; i < 8; i++) {
-                map.put("waiters", manager.waitersWorkingOnTheDay(i));
-
-            }
             return new ModelAndView(map, "update_employees.handlebars");
         }, new HandlebarsTemplateEngine());
         post("/add_employees", (req, res) -> {
@@ -141,22 +137,7 @@ public class App {
         get("/clear_employees", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
             String waiterNameInsert = req.queryParams("waiterName");
-//            map.put("weekday", manager.daysOfWeek());
-//            map.put("days", manager.daysOfWeek());
-//            map.put("waiters1",
-//                    manager.waitersWorkingOnTheDay(1));
-//            map.put("waiters2",
-//                    manager.waitersWorkingOnTheDay(2));
-//            map.put("waiters3",
-//                    manager.waitersWorkingOnTheDay(3));
-//            map.put("waiters4",
-//                    manager.waitersWorkingOnTheDay(4));
-//            map.put("waiters5",
-//                    manager.waitersWorkingOnTheDay(5));
-//            map.put("waiters6",
-//                    manager.waitersWorkingOnTheDay(6));
-//            map.put("waiters7",
-//                    manager.waitersWorkingOnTheDay(7));
+// 
             map.put("weekday", manager.daysOfWeek());
             map.put("days", manager.daysOfWeek());
             return new ModelAndView(map, "update_employees.handlebars");

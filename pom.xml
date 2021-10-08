@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>net.overgeared.webApp</groupId>
     <artifactId>overgear-manager</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
@@ -67,7 +67,7 @@
                 <version>2.0.13</version>
                 <configuration>
                     <processTypes>
-                        <web>/home/codex/pro/overgear-manager/src/main/java/overgeared/App.java</web>
+                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* net.overgeared.webApp</web>
                     </processTypes>
                 </configuration>
             </plugin>

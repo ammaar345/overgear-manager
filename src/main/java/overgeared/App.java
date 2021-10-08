@@ -133,6 +133,7 @@ public class App {
         get("/clear_employees", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
             String waiterNameInsert = req.queryParams("waiterName");
+
             map.put("weekday", manager.daysOfWeek());
             map.put("days", manager.daysOfWeek());
             return new ModelAndView(map, "update_employees.handlebars");

@@ -1,0 +1,139 @@
+
+<!doctype html>
+<div lang="en">
+
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Manager Roster</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="signing.css" crossorigin="anonymous">
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/offcanvas/">
+        <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
+
+    </head>
+
+    <style>
+table, th, td{
+border: 1px solid black;
+}
+table{
+width:50%;
+border-collapse: collapse;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+<!--  float: none;-->
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+
+    <div class="container bg-faded">
+        <h1 style="color: rgb(10, 134, 156);" class="text-center">Welcome To The Overgeared Restaurant Waiter</h1>
+
+        <div class="row">
+
+        </div>
+        <hr>
+        <form action="/roster/manager_chamber" method="POST">
+
+            <div class="sidebar">
+                <header id="header">THE OVERGEARED RESTAURANT WAITER CHAMBERS</header>
+                <a class="" href="/manager_chamber">ROSTER SCHEDULE</a>
+                <a href="/waiterAbsence" class="nav-link">ABSENCE REPORT</a>
+<!--                <a href="/update_employees" class="nav-link">UPDATE EMPLOYEES</a>-->
+                <a href="/" class="nav-link">HOME</a>
+
+            </div>
+
+            <div class="content">
+
+                <header>ROSTER SCHEDULE</header>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+
+                    <tbody>
+                    <th>
+                    <td>Ammaar</td><br>
+                    <td>Bantu</td>
+                    <td>Vuyo</td>
+                    <td>Sese</td>
+                    <td>Sese</td>
+                    <td>Sese</td>
+                    <td>Sese</td>
+                    </th>
+                    </tbody>
+                </table>
+
+            </div>
+
+    </div>
+    </body>

@@ -49,6 +49,18 @@ public class App {
             return new ModelAndView(map, "absence_report.handlebars");
         }, new HandlebarsTemplateEngine());
 
+
+        get("/waiterAbsence", (req, res) -> {
+            Map<String, Object> map = new HashMap<>();
+            return new ModelAndView(map, "waiterAbsence.handlebars");
+        }, new HandlebarsTemplateEngine());
+
+        get("/waiter_chamber", (req, res) -> {
+            Map<String, Object> map = new HashMap<>();
+            return new ModelAndView(map, "waiter_chamber.handlebars");
+        }, new HandlebarsTemplateEngine());
+
+
         get("/add_employees", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
             map.put("weekday", manager.daysOfWeek());

@@ -67,8 +67,7 @@
                 <version>2.0.13</version>
                 <configuration>
                     <processTypes>
-                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* net.webapp.App</web>
-                    </processTypes>
+                        <web>/home/codex/pro/overgear-manager/src/main/java/overgeared/App.java</web>                    </processTypes>
                 </configuration>
             </plugin>
             <plugin>

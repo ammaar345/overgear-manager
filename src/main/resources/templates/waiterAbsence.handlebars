@@ -124,17 +124,15 @@ pre {
         <h1 style="color: rgb(10, 134, 156);" class="text-center">ABSENCE REPORT CARD</h1>
     </div>
     <div>
-        <form id="body" class="parent">
-            <div class="content">
-                <label id="number" for="fname">Employee ID:</label><br>
-                <input type="text" id="fname" name="fname"><br>
 
-                <label id="number" for="lname">Employee Name:</label><br>
-                <input type="text" id="lname" name="lname">
+        <form action="/waiterAbsence" id="body" method="POST" class="parent">
+            <div class="content">
+                <label id="number" for="fname">Employee Name:</label><br>
+                <input type="text" id="fname" name="waiterName"><br>
 
             </div>
 
-            <label id="number" class="content" for="cars">Day of Absence:</label>
+            <label id="number" class="dropdown" for="cars">Day of Absence:</label>
             <select name="dayOff" id="cars">
 
                 <option value="monday">Monday</option>
@@ -159,8 +157,8 @@ pre {
 
             </select>
 
-            <input type="submit" class="bg" value="Submit Request">
-
+            <input type="submit" class="btn btn-success" value="Submit Request">
+        </form>
     </div>
 
     <br>

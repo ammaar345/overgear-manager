@@ -59,6 +59,9 @@ public class Manager {
 
     public void clearWaiterShifts() {
         handle.execute("drop table shifts");
+        handle.execute("drop table waiters");
+      handle.execute("create table if not exists waiters(id integer identity,name varchar(50))");
+
         handle.execute("create table if not exists shifts ( id integer identity, waiternameid int not null,weekdayid int not null, FOREIGN key (waiternameid) REFERENCES waiters(id),FOREIGN key (weekdayid) REFERENCES weekdays(id))    ");
 
     }

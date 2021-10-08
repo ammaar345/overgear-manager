@@ -10,6 +10,7 @@ public class WaiterTest {
         Manager manager = new Manager();
         manager.createTables();
        manager.daysOfWeek();
+        System.out.println(manager.waiterNames());
 //        System.out.println(manager.waitersWorkingDays());
 //        System.out.println(manager.updateWaiterShift("Joe",day));
     }

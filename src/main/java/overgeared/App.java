@@ -41,6 +41,23 @@ public class App {
 
         get("/manager_chamber", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
+            map.put("weekday", manager.daysOfWeek());
+            map.put("days", manager.daysOfWeek());
+            map.put("waiters1",
+                    manager.waitersWorkingOnTheDay(1));
+            map.put("waiters2",
+                    manager.waitersWorkingOnTheDay(2));
+            map.put("waiters3",
+                    manager.waitersWorkingOnTheDay(3));
+            map.put("waiters4",
+                    manager.waitersWorkingOnTheDay(4));
+            map.put("waiters5",
+                    manager.waitersWorkingOnTheDay(5));
+            map.put("waiters6",
+                    manager.waitersWorkingOnTheDay(6));
+            map.put("waiters7",
+                    manager.waitersWorkingOnTheDay(7));
+
             return new ModelAndView(map, "manager_chamber.handlebars");
         }, new HandlebarsTemplateEngine());
 
@@ -74,14 +91,24 @@ public class App {
         post("/add_employees", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
             String waiterNameInsert = req.queryParams("waiterName");
-            map.put("weekday", manager.daysOfWeek());
-            map.put("days", manager.daysOfWeek());
-            for (int i = 1; i < 8; i++) {
-                map.put("waiters", manager.waitersWorkingOnTheDay(i));
-
-            }
             manager.addWaiter(waiterNameInsert);
             map.put("weekday", manager.daysOfWeek());
+            map.put("days", manager.daysOfWeek());
+
+            map.put("waiters1",
+                    manager.waitersWorkingOnTheDay(1));
+            map.put("waiters2",
+                    manager.waitersWorkingOnTheDay(2));
+            map.put("waiters3",
+                    manager.waitersWorkingOnTheDay(3));
+            map.put("waiters4",
+                    manager.waitersWorkingOnTheDay(4));
+            map.put("waiters5",
+                    manager.waitersWorkingOnTheDay(5));
+            map.put("waiters6",
+                    manager.waitersWorkingOnTheDay(6));
+            map.put("waiters7",
+                    manager.waitersWorkingOnTheDay(7));
 
             return new ModelAndView(map, "update_employees.handlebars");
 
@@ -89,29 +116,49 @@ public class App {
         post("/clear_employees", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
             String waiterNameInsert = req.queryParams("waiterName");
+
+            manager.clearWaiterShifts();
+//            map.put("waiters1",
+//                    manager.waitersWorkingOnTheDay(1));
+//            map.put("waiters2",
+//                    manager.waitersWorkingOnTheDay(2));
+//            map.put("waiters3",
+//                    manager.waitersWorkingOnTheDay(3));
+//            map.put("waiters4",
+//                    manager.waitersWorkingOnTheDay(4));
+//            map.put("waiters5",
+//                    manager.waitersWorkingOnTheDay(5));
+//            map.put("waiters6",
+//                    manager.waitersWorkingOnTheDay(6));
+//            map.put("waiters7",
+//                    manager.waitersWorkingOnTheDay(7));
+//            System.out.println(manager.waiterNames());
             map.put("weekday", manager.daysOfWeek());
             map.put("days", manager.daysOfWeek());
-            for (int i = 1; i < 8; i++) {
-                map.put("waiters", manager.waitersWorkingOnTheDay(i));
-
-            }
-       manager.clearWaiterShifts();
-
-
             return new ModelAndView(map, "update_employees.handlebars");
 
         }, new HandlebarsTemplateEngine());
         get("/clear_employees", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
             String waiterNameInsert = req.queryParams("waiterName");
+//            map.put("weekday", manager.daysOfWeek());
+//            map.put("days", manager.daysOfWeek());
+//            map.put("waiters1",
+//                    manager.waitersWorkingOnTheDay(1));
+//            map.put("waiters2",
+//                    manager.waitersWorkingOnTheDay(2));
+//            map.put("waiters3",
+//                    manager.waitersWorkingOnTheDay(3));
+//            map.put("waiters4",
+//                    manager.waitersWorkingOnTheDay(4));
+//            map.put("waiters5",
+//                    manager.waitersWorkingOnTheDay(5));
+//            map.put("waiters6",
+//                    manager.waitersWorkingOnTheDay(6));
+//            map.put("waiters7",
+//                    manager.waitersWorkingOnTheDay(7));
             map.put("weekday", manager.daysOfWeek());
             map.put("days", manager.daysOfWeek());
-            for (int i = 1; i < 8; i++) {
-                map.put("waiters", manager.waitersWorkingOnTheDay(i));
-
-            }
-            manager.clearWaiterShifts();
-
             return new ModelAndView(map, "update_employees.handlebars");
 
         }, new HandlebarsTemplateEngine());
@@ -131,10 +178,21 @@ public class App {
             Map<String, Object> map = new HashMap<>();
             map.put("weekday", manager.daysOfWeek());
             map.put("days", manager.daysOfWeek());
-            for (int i = 1; i < 8; i++) {
-                map.put("waiters", manager.waitersWorkingOnTheDay(i));
+            map.put("waiters1",
+                    manager.waitersWorkingOnTheDay(1));
+            map.put("waiters2",
+                    manager.waitersWorkingOnTheDay(2));
+            map.put("waiters3",
+                    manager.waitersWorkingOnTheDay(3));
+            map.put("waiters4",
+                    manager.waitersWorkingOnTheDay(4));
+            map.put("waiters5",
+                    manager.waitersWorkingOnTheDay(5));
+            map.put("waiters6",
+                    manager.waitersWorkingOnTheDay(6));
+            map.put("waiters7",
+                    manager.waitersWorkingOnTheDay(7));
 
-            }
             return new ModelAndView(map, "update_employees.handlebars");
         }, new HandlebarsTemplateEngine());
 
@@ -146,16 +204,29 @@ public class App {
 //
             map.put("weekday", manager.daysOfWeek());
             map.put("days", manager.daysOfWeek());
-            for (int i = 1; i < 8; i++) {
-                map.put("waiters", manager.waitersWorkingOnTheDay(i));
-
-            }        manager.updateWaiterShift(waiterName, daysSelected);
-
+            manager.updateWaiterShift(waiterName, daysSelected);
 
             return new ModelAndView(map, "update_employees.handlebars");
         }, new HandlebarsTemplateEngine());
         get("/rosters", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
+            map.put("weekday", manager.daysOfWeek());
+            map.put("days", manager.daysOfWeek());
+            map.put("waiters1",
+                    manager.waitersWorkingOnTheDay(1));
+            map.put("waiters2",
+                    manager.waitersWorkingOnTheDay(2));
+            map.put("waiters3",
+                    manager.waitersWorkingOnTheDay(3));
+            map.put("waiters4",
+                    manager.waitersWorkingOnTheDay(4));
+            map.put("waiters5",
+                    manager.waitersWorkingOnTheDay(5));
+            map.put("waiters6",
+                    manager.waitersWorkingOnTheDay(6));
+            map.put("waiters7",
+                    manager.waitersWorkingOnTheDay(7));
+
             return new ModelAndView(map, "rosters.handlebars");
         }, new HandlebarsTemplateEngine());
 

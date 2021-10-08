@@ -96,11 +96,13 @@ div.content {
     <form action="/rosters" method="POST">
 
         <div class="sidebar">
-            <header id="header">THE OVERGEARED RESTAURANT WAITERS CHAMBERS</header>
-            <a class="active" href="/home">ROSTER SCHEDULE</a>
+            <header id="header">The Overgeared Restaurant Waiters Chamber</header>
+            <a class="" href="/rosters">ROSTER SCHEDULE</a>
             <a href="/absence_report" class="nav-link">ABSENCE REPORT</a>
-<!--                <a href="/Help" class="nav-link">HELP</a>-->
-            <a href="/" class="nav-link">HOME</a>
+
+
+            <a href="/" class="nav-link">Home</a>
+
 
         </div>
         <div class="content">
@@ -108,29 +110,77 @@ div.content {
             <!--        <main id="main-doc">-->
             <!--            <section class="main-section" id="Roster_Schedule">-->
             <header>ROSTER SCHEDULE</header>
-            <table>
+            <table class=" table table-bordered text-dark">
+                <!--<tr>-->
                 <tr>
-                    <th>Name</th>
-                    <th>Sun</th>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thurs</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
+
+                    {{#each days}}
+                        <th>
+                            {{this}}
+
+                        </th>
+                    {{/each}}
+
                 </tr>
 
-                <tbody>
-                <th>
-                <td>Ammaar</td><br>
-                <td>Bantu</td>
-                <td>Vuyo</td>
-                <td>Sese</td>
-                <td>Sese</td>
-                <td>Sese</td>
-                <td>Sese</td>
-                </th>
+
+                <tr>
+
+                    <td scope="col">
+                        {{#each waiters1}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                    <td scope="col">
+                        {{#each waiters2}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                    <td scope="col">
+                        {{#each waiters3}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                    <td scope="col">
+
+                        {{#each waiters4}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                    <td scope="col">
+
+                        {{#each waiters5}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                    <td scope="col">
+                        {{#each waiters6}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                    <td scope="col">
+
+                        {{#each waiters7}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                </tr>
                 </tbody>
+
             </table>
             <!--            </section>-->
             <!--            <section class="main-section" id="Absence_Report">-->

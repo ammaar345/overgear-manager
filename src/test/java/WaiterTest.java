@@ -8,9 +8,10 @@ public class WaiterTest {
     @Test
     public void bread() {
         Manager manager = new Manager();
-        manager.createTables();
-       manager.daysOfWeek();
-        System.out.println(manager.waiterNames());
+        manager.sendReport("ammaar", "monday", "friday");
+        System.out.println(manager.daysToBeReplaced());
+        System.out.println(manager.daysOff());
+        System.out.println(manager.waitersRequestedOffDays());
 //        System.out.println(manager.waitersWorkingDays());
 //        System.out.println(manager.updateWaiterShift("Joe",day));
     }

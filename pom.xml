@@ -7,7 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>overgear-manager</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <dependencies>  
+    <dependencies>
 
         <dependency>
             <groupId>com.sparkjava</groupId>

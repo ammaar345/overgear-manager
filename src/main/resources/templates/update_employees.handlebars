@@ -1,7 +1,5 @@
-
 <!doctype html>
 <html lang="en">
-
 
 
 <head>
@@ -85,6 +83,7 @@ div.content {
     float: none;
   }
 }
+
 </style>
 
 
@@ -106,44 +105,83 @@ div.content {
 
         </div>
         <div class="content">
-        <header>UPDATE EMPLOYEES</header>
-  <table class=" table table-bordered text-dark">
-<tr>
+            <header>UPDATE EMPLOYEES</header>
+            <table class=" table table-bordered text-dark">
+                <!--<tr>-->
+                <tr>
 
-  							{{#each days}}
-  							<th>
-  								{{this}}
+                    {{#each days}}
+                        <th>
+                            {{this}}
 
-</th>
-  								{{/each}}
+                        </th>
+                    {{/each}}
 
-</tr>
+                </tr>
 
 
-  					<tbody>
-  						<tr>
+                <tr>
 
-  							{{#each days}}
+                    <td scope="col">
+                        {{#each waiters1}}
+                            <li>{{this}}</li>
 
-  							<td scope="col">
-  								{{#each waiters}}
-  								<li>{{this}}</li>
+                        {{/each}}
 
-  								{{/each}}
+                    </td>
+                    <td scope="col">
+                        {{#each waiters2}}
+                            <li>{{this}}</li>
 
-  							</td>
+                        {{/each}}
 
-  							{{/each}}
+                    </td>
+                    <td scope="col">
+                        {{#each waiters3}}
+                            <li>{{this}}</li>
 
-  						</tr>
+                        {{/each}}
 
-  					</tbody>
+                    </td>
+                    <td scope="col">
 
-  				</table>
+                        {{#each waiters4}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                    <td scope="col">
+
+                        {{#each waiters5}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                    <td scope="col">
+                        {{#each waiters6}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                    <td scope="col">
+
+                        {{#each waiters7}}
+                            <li>{{this}}</li>
+
+                        {{/each}}
+
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
     </form>
     <br>
     <label for="" class="sr-only">Employees Information</label>
-    <input type=text name="waiterName" id="inputName" class="employee" placeholder="Employee" >
+    <input type=text name="waiterName" id="inputName" class="employee" placeholder="Employee">
 
     <a href="/add_employees">
         <input type="submit" value="Add Waiter" class="bg-primary">
@@ -151,27 +189,29 @@ div.content {
 
     <h1>Scheduled Shifts:</h1>
 
-            <form action="/update_employees" method="post">
-            {{#each weekday}}
-                <label for="" class="pl-5 px-3 ">{{this}}</label><input type="checkbox" value="{{this}}"
-                name="chkDays" class="checkbox">
-            {{/each}}
+    <form action="/update_employees" method="post">
+        {{#each weekday}}
+            <label for="" class="pl-5 px-3 ">{{this}}</label><input type="checkbox" value="{{this}}"
+                                                                    name="chkDays" class="checkbox">
+        {{/each}}
 
-            <input type=text name="employeeName" id="inputName" class="employee " placeholder="Employee" >
+        <input type=text name="employeeName" id="inputName" class="employee " placeholder="Employee">
 
-                <input type="submit" value="Submit">
-        </div>
-
+        <input type="submit" value="Submit">
 
     </form>
 
-</div>
-<form action="/clear_employees" method="post">
-   <input type="submit" text="bread" value="Remove All Waiters" class="bg-dark">
+    <form action="/clear_employees" method="get">
+        <a href="/clear_employees"><input type="submit" text="bread" value="Remove All Waiters">
+        </a>
 
-             </form>
-</div>
-
+    </form>
 </div>
 
+
+</div>
+
+</div>
+
+</div>
 </body>

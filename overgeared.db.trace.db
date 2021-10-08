@@ -74,3 +74,99 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/codex-
 2021-10-07 16:39:49 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DAYS" not found; SQL statement:
 select name from days [42102-199]
+2021-10-08 12:14:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:617)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1571)
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1547)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:737)
+	at org.jdbi.v3.core.statement.DefaultStatementBuilder.create(DefaultStatementBuilder.java:62)
+	at org.jdbi.v3.core.statement.SqlStatement.internalExecute(SqlStatement.java:1430)
+	at org.jdbi.v3.core.result.ResultProducers.lambda$getResultSet$2(ResultProducers.java:59)
+	at org.jdbi.v3.core.result.ResultIterable.lambda$of$0(ResultIterable.java:53)
+	at org.jdbi.v3.core.result.ResultIterable.stream(ResultIterable.java:141)
+	at org.jdbi.v3.core.result.ResultIterable.collect(ResultIterable.java:197)
+	at org.jdbi.v3.core.result.ResultIterable.list(ResultIterable.java:186)
+	at overgeared.Manager.daysOfWeek(Manager.java:93)
+	at overgeared.App.lambda$main$9(App.java:136)
+	at spark.TemplateViewRouteImpl$1.handle(TemplateViewRouteImpl.java:66)
+	at spark.http.matching.Routes.execute(Routes.java:61)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1584)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.Server.handle(Server.java:501)
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:273)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:105)
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:336)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:313)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:129)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:375)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-10-08 12:20:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+create table if not exists shifts ( id integer identity, waiternameid int not null,weekdayid int not null, FOREIGN key (waiternameid) REFERENCES waiters(id),FOREIGN key (weekdayid) REFERENCES weekdays(id))     [42102-199]
+2021-10-08 12:44:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+drop table waiters [42102-199]
+2021-10-08 12:44:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHIFTS" not found; SQL statement:
+drop table shifts [42102-199]
+2021-10-08 12:46:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+drop table waiters [42102-199]
+2021-10-08 12:47:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+SELECT  waiters.name AS name
+    FROM waiters
+    LEFT JOIN shifts
+    ON waiters.id=shifts.waiternameid
+    LEFT JOIN weekdays
+    ON weekdays.id=shifts.weekdayid
+    where weekdays.id=? [42102-199]
+2021-10-08 12:47:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+drop table waiters [42102-199]
+2021-10-08 12:49:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+SELECT  waiters.name AS name
+    FROM waiters
+    LEFT JOIN shifts
+    ON waiters.id=shifts.waiternameid
+    LEFT JOIN weekdays
+    ON weekdays.id=shifts.weekdayid
+    where weekdays.id=? [42102-199]
+2021-10-08 12:50:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+drop table waiters [42102-199]
+2021-10-08 12:51:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+drop table waiters [42102-199]
+2021-10-08 12:51:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+drop table waiters [42102-199]
+2021-10-08 12:52:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+drop table waiters [42102-199]
+2021-10-08 12:52:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WAITERS" not found; SQL statement:
+SELECT  waiters.name AS name
+    FROM waiters
+    LEFT JOIN shifts
+    ON waiters.id=shifts.waiternameid
+    LEFT JOIN weekdays
+    ON weekdays.id=shifts.weekdayid
+    where weekdays.id=? [42102-199]

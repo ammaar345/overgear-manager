@@ -61,19 +61,28 @@ public class App {
             return new ModelAndView(map, "manager_chamber.handlebars");
         }, new HandlebarsTemplateEngine());
 
-        get("/absence_report", (req, res) -> {
-            Map<String, Object> map = new HashMap<>();
-            return new ModelAndView(map, "absence_report.handlebars");
-        }, new HandlebarsTemplateEngine());
 
-
-        get("/waiterAbsence", (req, res) -> {
-            Map<String, Object> map = new HashMap<>();
-            return new ModelAndView(map, "waiterAbsence.handlebars");
-        }, new HandlebarsTemplateEngine());
 
         get("/waiter_chamber", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
+            map.put("weekday", manager.daysOfWeek());
+            map.put("days", manager.daysOfWeek());
+            map.put("waiters1",
+                    manager.waitersWorkingOnTheDay(1));
+            map.put("waiters2",
+                    manager.waitersWorkingOnTheDay(2));
+            map.put("waiters3",
+                    manager.waitersWorkingOnTheDay(3));
+            map.put("waiters4",
+                    manager.waitersWorkingOnTheDay(4));
+            map.put("waiters5",
+                    manager.waitersWorkingOnTheDay(5));
+            map.put("waiters6",
+                    manager.waitersWorkingOnTheDay(6));
+            map.put("waiters7",
+                    manager.waitersWorkingOnTheDay(7));
+
+
             return new ModelAndView(map, "waiter_chamber.handlebars");
         }, new HandlebarsTemplateEngine());
 
@@ -132,16 +141,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-        get("/absence_report", (req, res) -> {
-            Map<String, Object> map = new HashMap<>();
-            return new ModelAndView(map, "absence_report.handlebars");
-        }, new HandlebarsTemplateEngine());
-        post("/absence_report", (req, res) -> {
-            Map<String, Object> map = new HashMap<>();
-//            manager.ad
-
-            return new ModelAndView(map, "absence_report.handlebars");
-        }, new HandlebarsTemplateEngine());
         get("/update_employees", (req, res) -> {
             Map<String, Object> map = new HashMap<>();
             map.put("weekday", manager.daysOfWeek());
@@ -169,10 +168,23 @@ public class App {
             map.put("weekday", manager.daysOfWeek());
             String waiterName = req.queryParams("employeeName");
             List<String> daysSelected = Arrays.asList(req.queryParamsValues("chkDays"));
-//
             map.put("weekday", manager.daysOfWeek());
             map.put("days", manager.daysOfWeek());
             manager.updateWaiterShift(waiterName, daysSelected);
+            map.put("waiters1",
+                    manager.waitersWorkingOnTheDay(1));
+            map.put("waiters2",
+                    manager.waitersWorkingOnTheDay(2));
+            map.put("waiters3",
+                    manager.waitersWorkingOnTheDay(3));
+            map.put("waiters4",
+                    manager.waitersWorkingOnTheDay(4));
+            map.put("waiters5",
+                    manager.waitersWorkingOnTheDay(5));
+            map.put("waiters6",
+                    manager.waitersWorkingOnTheDay(6));
+            map.put("waiters7",
+                    manager.waitersWorkingOnTheDay(7));
 
             return new ModelAndView(map, "update_employees.handlebars");
         }, new HandlebarsTemplateEngine());
@@ -198,5 +210,25 @@ public class App {
             return new ModelAndView(map, "rosters.handlebars");
         }, new HandlebarsTemplateEngine());
 
+        post("/waiterAbsence", (req, res) -> {
+            Map<String, Object> map = new HashMap<>();
+            String nameOfWaiter = req.queryParams("waiterName");
+            String dayOff = req.queryParams("dayOff");
+            String dayToRepay = req.queryParams("dayReplaced");
+            manager.sendReport(nameOfWaiter, dayOff, dayToRepay);
+            return new ModelAndView(map, "waiterAbsence.handlebars");
+
+        }, new HandlebarsTemplateEngine());
+
+
+//
+//
+        get("/absence_report", (req, res) -> {
+            Map<String, Object> map = new HashMap<>();
+            return new ModelAndView(map, "absence_report.handlebars");
+
+        }, new HandlebarsTemplateEngine());
+
     }
+
 }

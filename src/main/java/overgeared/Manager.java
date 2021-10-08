@@ -21,6 +21,10 @@ public class Manager {
         return names;
     }
 
+    public void sendReport(String nameOfWaiter, String dayOff, String dayReplaced) {
+        handle.execute("insert into absentRequests(name,day_absent,day_replaced),VALUES(?,?,?)", nameOfWaiter, dayOff, dayReplaced);
+    }
+
     public void createTables() {
 //        handle.execute("drop table if exists waiters");
         handle.execute("drop table if exists weekdays");
@@ -39,6 +43,23 @@ public class Manager {
         handle.execute("insert into weekdays (name)VALUES('Friday')");
         handle.execute("insert into weekdays (name)VALUES('Saturday')");
         handle.execute("insert into weekdays (name)VALUES('Sunday')");
+    }
+
+    public List<String> waitersRequestedOffDays() {
+        List<String> namesOfWaiters = handle.select("select name from absenteeRequests").mapTo(String.class).list();
+
+        return namesOfWaiters;
+    }
+
+    public List<String> daysOff() {
+        List<String> daysOff = handle.select("select day_absent from absenteeRequests").mapTo(String.class).list();
+
+        return daysOff;
+    }
+
+    public List<String> daysToBeReplaced() {
+        List<String> dayToBeReplaced = handle.select("select day_replaced from absenteeRequests").mapTo(String.class).list();
+        return dayToBeReplaced;
     }
 
     public void addWaiter(String name) {
@@ -60,7 +81,7 @@ public class Manager {
     public void clearWaiterShifts() {
         handle.execute("drop table shifts");
         handle.execute("drop table waiters");
-      handle.execute("create table if not exists waiters(id integer identity,name varchar(50))");
+        handle.execute("create table if not exists waiters(id integer identity,name varchar(50))");
 
         handle.execute("create table if not exists shifts ( id integer identity, waiternameid int not null,weekdayid int not null, FOREIGN key (waiternameid) REFERENCES waiters(id),FOREIGN key (weekdayid) REFERENCES weekdays(id))    ");
 

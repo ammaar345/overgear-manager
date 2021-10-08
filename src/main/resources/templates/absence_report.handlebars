@@ -1,7 +1,5 @@
-
 <!doctype html>
 <html lang="en">
-
 
 
 <head>
@@ -87,6 +85,8 @@ div.content {
     float: none;
   }
 }
+
+
 </style>
 
 
@@ -97,7 +97,7 @@ div.content {
     <div class="row">
     </div>
     <hr>
-    <form action="/absence_report" method="POST">
+
 
         <div class="sidebar">
             <header id="header">THE OVERGEARED RESTAURANT MANAGER CHAMBERS</header>
@@ -107,12 +107,34 @@ div.content {
             <a href="/" class="nav-link">HOME</a>
 
         </div>
-    </form>
 
     <div class="content">
-<!--        <header>ABSENCE REPORT</header>-->
-    <h1>ABSENCE REPORT</h1>
+        <!--        <header>ABSENCE REPORT</header>-->
+        <h1>ABSENCE REPORT</h1>
+        <form action="/absence_report" method="GET">
+        <table class="able table-bordered text-dark">
+            <tr>
+                <th>Name</th>
+                <th>Day Absent</th>
 
+                <th>Day Replaced</th>
+            </tr>
+            <tr>
+            <td>
+                {{#each name}}
+                    {{this}}
+                </td>
+                {{/each}}
+            <td>{{#each dayAbsent}}</td>
+                {{this}}
+            {{/each}}
+            </td>
+                {{#each dayToReplace}}
+                    {{this}}
+                    {{/each}}
+            </tr>
+        </table>
+        </form>
 
 </div>
 </div>

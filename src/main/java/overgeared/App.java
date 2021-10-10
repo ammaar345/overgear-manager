@@ -32,7 +32,7 @@ public class App {
 //      manager.updateWaiterShift("tom",weekdays);
 //        System.out.println(weekdays);
 //        System.out.println(manager.waiterNames());
-        port(4567);
+//        port(4567);
         staticFiles.location("/public");
         get("/", (req, res) -> {
             Map<String, Object> map = new HashMap<>();

@@ -21,9 +21,6 @@ public class Manager {
         return names;
     }
 
-    public void sendReport(String nameOfWaiter, String dayOff, String dayReplaced) {
-        handle.execute("insert into absentRequests(name,day_absent,day_replaced)VALUES(?,?,?)", nameOfWaiter, dayOff, dayReplaced);
-    }
 
     public void createTables() {
 //        handle.execute("drop table if exists waiters");

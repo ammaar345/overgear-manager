@@ -87,6 +87,7 @@ div.content {
 }
 
 
+
 </style>
 
 
@@ -99,47 +100,57 @@ div.content {
     <hr>
 
 
-        <div class="sidebar">
-            <header id="header">THE OVERGEARED RESTAURANT MANAGER CHAMBERS</header>
-            <a class="" href="/manager_chamber">ROSTER SCHEDULE</a>
-            <a href="/absence_report" class="nav-link">ABSENCE REPORT</a>
-            <a href="/update_employees" class="nav-link">UPDATE EMPLOYEES</a>
-            <a href="/" class="nav-link">HOME</a>
+    <div class="sidebar">
+        <header id="header">THE OVERGEARED RESTAURANT MANAGER CHAMBERS</header>
+        <a class="" href="/manager_chamber">ROSTER SCHEDULE</a>
+        <a href="/absence_report" class="nav-link">ABSENCE REPORT</a>
+        <a href="/update_employees" class="nav-link">UPDATE EMPLOYEES</a>
+        <a href="/" class="nav-link">HOME</a>
 
-        </div>
+    </div>
 
     <div class="content">
         <!--        <header>ABSENCE REPORT</header>-->
         <h1>ABSENCE REPORT</h1>
         <form action="/absence_report" method="GET">
-        <table class="able table-bordered text-dark">
-            <tr>
-                <th>Name</th>
-                <th>Day Absent</th>
+            <table class="able table-bordered text-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Day Absent</th>
 
-                <th>Day Replaced</th>
-            </tr>
-            <tr>
-            <td>
-                {{#each name}}
-                    {{this}}
-                </td>
-                {{/each}}
-            <td>{{#each dayAbsent}}
-                {{this}}
-            </td>
-            {{/each}}
-            </td>
-                <td>
-                {{#each dayToReplace}}
+                    <th>Day Replaced</th>
+                </tr>
 
-                    {{this}}
-                </td>
+                <tr>
+
+
+                    <!--                  <ul>-->
+                    {{#each name}}
+
+
+
+                        <td>
+                            {{this}}
+
+                        </td>
                     {{/each}}
-            </tr>
-        </table>
+
+                    {{#each dayAbsent}}
+                        <td>
+                            {{this}}
+                        </td>
+                    {{/each}}
+
+                    {{#each dayToReplace}}
+                        <td>
+                            {{this}}
+                        </td>
+                    {{/each}}
+                    <!--        </ul>-->
+                </tr>
+            </table>
         </form>
 
-</div>
+    </div>
 </div>
 </body>

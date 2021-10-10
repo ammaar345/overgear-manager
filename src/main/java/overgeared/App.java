@@ -198,5 +198,10 @@ public class App {
             return new ModelAndView(map, "rosters.handlebars");
         }, new HandlebarsTemplateEngine());
 
+        get("/waiterAbsence", (req, res) -> {
+            Map<String, Object> map = new HashMap<>();
+            return new ModelAndView(map, "waiterAbsence.handlebars");
+        }, new HandlebarsTemplateEngine());
+
     }
 }

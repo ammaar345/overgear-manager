@@ -71,7 +71,7 @@ pre {
 
 .content, #number {
   width: 100%;
-  padding: 25px
+  padding: 30px
   }
 
 label  {
@@ -82,29 +82,44 @@ input {
   display: flex;
 }
 
-submit {
-  text-align: center;
+input[type=submit]:hover {
+  background-color: #A6E8E4;
 }
 
 input[type=submit] {
-  width: 85%;
-  background-color: #4CAF50;
+  width: 100%;
+  background-color: #FFE4FA;
   color: white;
-  padding: 14px 20px;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
+  color: #1C2833;
 }
 
 input[type=text], select {
-  width: 85%;
+  width: 100%;
   padding: 12px 20px 12px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+div.parentElement{
+    text-align: center;
+    }
+
+.btn-work {
+    width: 250px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 0;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
 }
 
 @media (max-width: 600px){
@@ -122,6 +137,7 @@ input[type=text], select {
     height: auto;
     width: 100%;
     overflow-y: none;
+    text-align: center;
   }
 
 .content {
@@ -170,8 +186,6 @@ input[type=text], select {
                 <label id="number" for="fname">Employee Name:</label><br>
                 <input type="text" id="fname" name="waiterName"><br>
 
-            </div>
-
             <label id="number" class="dropdown" for="cars">Day of Absence:</label>
             <select name="dayOff" id="cars">
 
@@ -182,7 +196,7 @@ input[type=text], select {
                 <option value="friday">Friday</option>
                 <option value="saturday">Saturday</option>
                 <option value="sunday">Sunday</option>
-            </select>
+            </select><br>
 
             <label id="number" class="content" for="cars">Day to replace shift:</label>
             <select name="dayReplaced" id="cars">
@@ -197,8 +211,12 @@ input[type=text], select {
 
             </select>
 
-            <input type="submit" class="btn btn-success" value="Submit Request">
+            <div id="parentElement">
+                <input type="submit" value="Submit Request" class="btn-work">
+            </div>
+
         </form>
+        </div>
 
          </div>
 </div>
